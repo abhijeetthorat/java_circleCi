@@ -38,10 +38,9 @@ public class FbTest {
 	//    System.setProperty("webdriver.gecko.driver", "/home/jombay/jombay_testing/workspace_git/driver/geckodriver");
 	//	DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 	//	capabilities.setCapability("marionette", false);
-
 	//    driver = new FirefoxDriver(capabilities);
 
-		System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
+		System.setProperty("webdriver.chrome.driver","chromedriver");
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless","--disable-gpu");
 		driver = new ChromeDriver(options);
