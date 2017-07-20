@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="TestSuite" parallel="classes" thread-count="2" >
+  <test name="Fb Integration Testing">
+    <classes>
+      <class name="com.fb.web.FbTest"/>
+    </classes>
+  </test>
+</suite>

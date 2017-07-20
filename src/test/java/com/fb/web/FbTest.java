@@ -1,0 +1,73 @@
+package com.fb.web;
+
+import java.io.IOException;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+import org.junit.After;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import com.fb.object.FBPage;
+import com.fb.object.GooglePage;
+import com.jcraft.jsch.Channel;
+import com.jcraft.jsch.ChannelExec;
+import com.jcraft.jsch.JSch;
+import com.jcraft.jsch.JSchException;
+import com.jcraft.jsch.Session;
+public class FbTest {
+
+	WebDriver driver;
+	GooglePage objgoogle;
+	FBPage     objfb;
+	String GoogleURL = "http://www.google.com/";
+	Properties prop = new Properties();
+	Logger logger = Logger.getLogger("devpinoyLogger");
+
+	@BeforeTest
+	public void setup() {
+	//    System.setProperty("webdriver.gecko.driver", "/home/jombay/jombay_testing/workspace_git/driver/geckodriver");
+	//	DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+	//	capabilities.setCapability("marionette", false);
+	//    driver = new FirefoxDriver(capabilities);
+
+		System.setProperty("webdriver.chrome.driver","/usr/local/bin/chromedriver");
+		ChromeOptions options = new ChromeOptions();
+		options.addArguments("--headless","--disable-gpu");
+		driver = new ChromeDriver(options);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);	
+	}
+
+	@Test
+	public void Google_Search_Test() throws InterruptedException, IOException {
+
+		driver.get(GoogleURL);
+		Thread.sleep(2000);
+		objgoogle = new GooglePage(driver);
+		objgoogle.googleSearch("Facebook");
+		objfb= new FBPage(driver);
+		objfb.fbLogin("test@t.com", "test123");
+
+	}
+
+	@Test
+	public void sample_Test()
+	{
+             System.out.println("This is passed");
+	}
+
+	@AfterTest
+	public void shutdown() {
+		logger.info("The Fb Test is completed!Shutdowning the Test!!");
+		driver.quit();
+	}
+}
