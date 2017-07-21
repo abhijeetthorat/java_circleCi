@@ -40,7 +40,7 @@ public class FbTest {
 	//	capabilities.setCapability("marionette", false);
 	//    driver = new FirefoxDriver(capabilities);
 
-	//	System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
+		System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
               //  driver =new ChromeDriver();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless","--disable-gpu");
