@@ -44,16 +44,16 @@ public class FbTest {
               //  driver =new ChromeDriver();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless","--disable-gpu");
-                options.addArguments("--remote-debugging-port=9222");
-                options.addArguments("--no-sandbox");
-                options.addArguments("--disable-setuid-sandbox");
+                //options.addArguments("--remote-debugging-port=9222");
+                //options.addArguments("--no-sandbox");
+                //options.addArguments("--disable-setuid-sandbox");
 		driver = new ChromeDriver(options);
 		//driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);	
 	}
 
 	@Test
 	public void Google_Search_Test() throws InterruptedException, IOException {
-
+                System.out.println("Starting the testing");
 		driver.get(GoogleURL);
 		Thread.sleep(2000);
 		objgoogle = new GooglePage(driver);
