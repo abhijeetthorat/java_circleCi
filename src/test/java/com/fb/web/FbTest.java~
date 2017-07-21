@@ -41,13 +41,13 @@ public class FbTest {
 	//    driver = new FirefoxDriver(capabilities);
 
 		System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
-              //  driver =new ChromeDriver();
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless","--disable-gpu");
+               driver =new ChromeDriver();
+	//	ChromeOptions options = new ChromeOptions();
+	//	options.addArguments("--headless","--disable-gpu");
                 //options.addArguments("--remote-debugging-port=9222");
                 //options.addArguments("--no-sandbox");
                 //options.addArguments("--disable-setuid-sandbox");
-		driver = new ChromeDriver(options);
+	//	driver = new ChromeDriver(options);
 		//driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);	
 	}
 
