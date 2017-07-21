@@ -57,8 +57,7 @@ jobs:
 
       - run:
           name: Running X virtual framebuffer
-          command: xvfb-run :99 -screen 0 1280x1024x16 +extension RANDR > /dev/null 2>&1
-          background: true
+          command: Xvfb :99 &
 
       - run:
           name: Run Tests
