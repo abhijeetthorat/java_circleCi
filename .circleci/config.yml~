@@ -49,9 +49,9 @@ jobs:
             sudo unzip chromedriver_linux64.zip
             sudo rm chromedriver_linux64.zip
             sudo mv chromedriver /usr/bin/
-            sudo chmod ugo+rx /usr/bin/chromedriver
+            sudo chmod 777 /usr/bin/chromedriver
             
-       - run:
+      - run:
 	  name: Install latest version of ChromeDriver1
           command: |
             sudo apt-get -y install libxpm4 libxrender1 libgtk2.0-0 libnss3 libgconf-2-4
