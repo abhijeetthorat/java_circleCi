@@ -45,14 +45,15 @@ jobs:
       - run:
           name: Install latest version of ChromeDriver Sample
           command: |
-            sudo wget https://chromedriver.storage.googleapis.com/2.26/chromedriver_linux64.zip
+            sudo wget https://chromedriver.storage.googleapis.com/2.30/chromedriver_linux64.zip
             sudo unzip chromedriver_linux64.zip
             sudo rm chromedriver_linux64.zip
             sudo mv chromedriver /usr/bin/
             sudo chmod 777 /usr/bin/chromedriver
             sudo apt-get install libxi6 libgconf-2-4
-            sudo apt-get -y install xvfb gtk2-engines-pixbuf
-            sudo apt-get -y install xfonts-cyrillic xfonts-100dpi xfonts-75dpi xfonts-base xfonts-scalable
+            sudo apt-get install -y xvfb fluxbox x11vnc dbus libasound2 libqt4-dbus libqt4-network libqtcore4 libqtgui4 libxss1 libpython2.7 libqt4-xml libaudio2 fontconfig liblcms1 lib32stdc++6 libc6-i386 lib32gcc1 nano
+            sudo apt-get install xvfb
+            sudo apt-get install xvfb firefox
             sudo apt-get -y install imagemagick x11-apps
 
       - run:

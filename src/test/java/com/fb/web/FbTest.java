@@ -44,7 +44,6 @@ public class FbTest {
               //  driver =new ChromeDriver();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless","--disable-gpu");
-                options.addArguments("window-size=1904x950");
 		driver = new ChromeDriver(options);
 		//driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);	
 	}
