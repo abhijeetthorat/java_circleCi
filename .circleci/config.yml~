@@ -8,7 +8,6 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/openjdk:8-jdk
-      - image: circleci/openjdk:8-jdk-browsers
       - image: selenium/standalone-chrome:3.1.0
       
       # Specify service dependencies here if necessary
@@ -21,20 +20,12 @@ jobs:
     environment:
       # Customize the JVM maximum heap limit
       MAVEN_OPTS: -Xmx3200m
-      - DISPLAY=:99
-      - CHROME_BIN=/usr/bin/google-chrome
     
     steps:
       - checkout
 
       # Download and cache dependencies
-      dependencies:
-       pre: 
-            - sudo wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - 
-            - sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
-            - sudo apt-get update
-            - sudo apt-get install -y google-chrome-stable
-            - sudo apt-get install -y xvfb
+
       - restore_cache:
           keys:
           - v1-dependencies-{{ checksum "pom.xml" }}
@@ -42,6 +33,27 @@ jobs:
           - v1-dependencies-
 
       - run: mvn dependency:go-offline
+
+      - run:
+          name: Install latest version of Chrome
+          command: |
+            wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
+            echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
+            apt-get update -qq
+            apt-get install -y google-chrome-stable
+
+      - run:
+          name: Install latest version of ChromeDriver
+          command: |
+            wget https://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip
+            unzip chromedriver_linux64.zip
+            rm chromedriver_linux64.zip
+            mv chromedriver /usr/bin/
+
+      - run:
+          name: Running X virtual framebuffer
+          command: Xvfb -ac :99 -screen 0 1280x1024x16 +extension RANDR > /dev/null 2>&1
+          background: true
 
       - save_cache:
           paths:
