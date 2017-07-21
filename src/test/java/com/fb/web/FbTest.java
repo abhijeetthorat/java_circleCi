@@ -41,9 +41,11 @@ public class FbTest {
 	//    driver = new FirefoxDriver(capabilities);
 
 		System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
-		ChromeOptions options = new ChromeOptions();
-		options.addArguments("--headless","--disable-gpu");
-		driver = new ChromeDriver(options);
+                driver =new ChromeDriver();
+		//ChromeOptions options = new ChromeOptions();
+		//options.addArguments("--headless","--disable-gpu");
+		//driver = new ChromeDriver(options);
+
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);	
 	}
 
