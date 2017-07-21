@@ -57,7 +57,7 @@ jobs:
 
       - run:
           name: Running X virtual framebuffer
-          command: Xvfb :0 -ac -screen 0 1024x768x24 &
+          command: Xvfb :0 -ac &
 
       - run:
           name: Run Tests
