@@ -34,14 +34,6 @@ jobs:
 
       - run: mvn dependency:go-offline
 
-      - run: 
-          name: Install latest version of ChromeDrivers
-          command: |
-            sudo apt-get install fonts-liberation xdg-utils libxss1 libappindicator1 libindicator7
-            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-            sudo dpkg -i google-chrome*.deb
-            sudo apt-get update
-
       - run:
           name: Install latest version of ChromeDriver Sample
           command: |
