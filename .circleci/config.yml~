@@ -42,6 +42,7 @@ jobs:
             sudo rm chromedriver_linux64.zip
             sudo mv chromedriver /usr/bin/
             sudo chmod 777 /usr/bin/chromedriver
+            sudo apt-get install libxi6 libgconf-2-4
 
       - save_cache:
           paths:
