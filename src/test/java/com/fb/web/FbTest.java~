@@ -44,7 +44,7 @@ public class FbTest {
               //  driver =new ChromeDriver();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless","--disable-gpu");
-                options.addArguments("remote-debugging-port=9222");
+                options.addArguments("--remote-debugging-port=9222");
 		driver = new ChromeDriver(options);
 		//driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);	
 	}
