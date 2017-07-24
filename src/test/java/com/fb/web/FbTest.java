@@ -31,7 +31,7 @@ public class FbTest {
 	FBPage     objfb;
 	String GoogleURL = "http://www.google.com/";
 	Properties prop = new Properties();
-	Logger logger = Logger.getLogger("devpinoyLogger");
+	//Logger logger = Logger.getLogger("devpinoyLogger");
 
 	@BeforeTest
 	public void setup() {
@@ -41,16 +41,20 @@ public class FbTest {
 	//    driver = new FirefoxDriver(capabilities);
 
 		System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
+         //       driver =new ChromeDriver();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless","--disable-gpu");
+              //  options.addArguments("--remote-debugging-port=9222");
+              //  options.addArguments("--no-sandbox");
+                //options.addArguments("--disable-setuid-sandbox");
 		driver = new ChromeDriver(options);
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);	
+		//driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);	
 	}
 
 	@Test
 	public void Google_Search_Test() throws InterruptedException, IOException {
-
-		driver.get(GoogleURL);
+                System.out.println("Starting the testing");
+		driver.get("http://www.google.com/");
 		Thread.sleep(2000);
 		objgoogle = new GooglePage(driver);
 		objgoogle.googleSearch("Facebook");
@@ -62,12 +66,12 @@ public class FbTest {
 	@Test
 	public void sample_Test()
 	{
-             System.out.println("This is passed");
+             System.out.println("This is passed test");
 	}
 
 	@AfterTest
 	public void shutdown() {
-		logger.info("The Fb Test is completed!Shutdowning the Test!!");
+	//	logger.info("The Fb Test is completed!Shutdowning the Test!!");
 		driver.quit();
 	}
 }
