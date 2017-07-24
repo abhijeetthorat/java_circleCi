@@ -44,7 +44,7 @@ public class FbTest {
          //       driver =new ChromeDriver();
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("--headless","--disable-gpu");
-                options.addArguments("--remote-debugging-port=9222");
+              //  options.addArguments("--remote-debugging-port=9222");
               //  options.addArguments("--no-sandbox");
                 //options.addArguments("--disable-setuid-sandbox");
 		driver = new ChromeDriver(options);
