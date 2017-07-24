@@ -73,10 +73,8 @@ jobs:
       - run: mvn test
 
       - store_artifacts:
-          path: target/surefire-reports
-          destination: tr1
+        path: target/surefire-reports
+        destination: tr1
        
        - store_test_results:
-          path: target/surefire-reports
-
-
+         path: target/surefire-reports
